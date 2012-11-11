@@ -128,10 +128,3 @@ class Profile(Sequence):
 		elements = [SoftElement.fromDict(e) for e in d]
 		return cls(elements)
 
-# Tests ------------------------------------------------------------------------
-
-if __name__ == "__main__":
-	p1 = Profile.fromSequence("what a beautiful day".split())
-	p1[2] = SoftElement({"beautiful": 2, "nice": 1})
-
-	print p1
