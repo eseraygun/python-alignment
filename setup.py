@@ -4,11 +4,10 @@ from distutils.core import setup
 
 setup(
 	name='alignment',
-	version='1.0',
+	version='1.0.2',
 	description='Python Alignment Library',
 	author='Eser Aygun',
 	author_email='eser.aygun@gmail.com',
 	url='https://github.com/eseraygun/python-alignment',
-	packages=['alignment'],
 	requires=['numpy'],
 )
