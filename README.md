@@ -1,5 +1,5 @@
-Alignment
-=========
+Python Alignment Library
+========================
 
 Native Python library for generic sequence alignment.
 
