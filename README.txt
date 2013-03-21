@@ -18,8 +18,8 @@ Typical usage looks like this::
     from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
 
     # Create sequences to be aligned.
-    a = Sequence("what a beautiful day".split())
-    b = Sequence("what a disappointingly bad day".split())
+    a = Sequence('what a beautiful day'.split())
+    b = Sequence('what a disappointingly bad day'.split())
 
     # Create a vocabulary and encode the sequences.
     v = Vocabulary()
@@ -35,8 +35,8 @@ Typical usage looks like this::
     for encoded in encodeds:
         alignment = v.decodeSequenceAlignment(encoded)
         print alignment
-        print "Alignment score:", alignment.score
-        print "Percent identity:", alignment.percentIdentity()
+        print 'Alignment score:', alignment.score
+        print 'Percent identity:', alignment.percentIdentity()
         print
 
 TODO List
