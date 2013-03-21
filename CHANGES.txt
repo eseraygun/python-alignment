@@ -1,0 +1,10 @@
+Changes in 1.0.3
+================
+
+- Better README file.
+- Included LICENSE file.
+- Included CHANGES file.
+- Use spaces instead of tabs.
+- Use single quotes instead of double quotes.
+- Limit line lengths to 79 characters.
+
