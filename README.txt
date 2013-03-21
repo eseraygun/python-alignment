@@ -42,4 +42,4 @@ Typical usage looks like this::
 TODO List
 =========
 
-* Profile-profile alignment is not working yet.
+- Profile-profile alignment is not working yet.
