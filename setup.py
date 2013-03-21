@@ -10,8 +10,8 @@ setup(
     author_email='eser.aygun@gmail.com',
     packages=['alignment'],
     url='https://github.com/eseraygun/python-alignment',
-    licence='LICENSE.txt',
+    license='LICENSE.txt',
     description='Native Python library for generic sequence alignment.',
     long_description=open('README.txt').read(),
-    install_requires=['numpy'],
+    requires=['numpy'],
 )
