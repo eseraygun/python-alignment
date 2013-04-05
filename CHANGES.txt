@@ -1,3 +1,8 @@
+Changes in 1.0.5
+================
+
+- Updated README file.
+
 Changes in 1.0.4
 ================
 
