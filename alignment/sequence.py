@@ -1,3 +1,9 @@
+try:
+    import numpypy as numpy
+except ImportError:
+    import numpy
+
+
 GAP_ELEMENT = '-'
 GAP_CODE = 0
 
@@ -78,14 +84,18 @@ class Sequence(BaseSequence):
 class EncodedSequence(BaseSequence):
 
     def __init__(self, argument, id=None):
-        import numpy
         if isinstance(argument, int):
-            super(EncodedSequence, self).__init__(numpy.zeros(argument, int),
-                                                  id)
+            super(EncodedSequence, self).__init__(
+                numpy.zeros(argument, int), id)
             self.position = 0
         else:
-            super(EncodedSequence, self).__init__(numpy.array(argument, int),
-                                                  id)
+            if isinstance(argument, numpy.ndarray) \
+                    and argument.dtype.name.startswith('int'):
+                super(EncodedSequence, self).__init__(
+                    numpy.array(argument), id)
+            else:
+                super(EncodedSequence, self).__init__(
+                    numpy.array(list(argument), int), id)
             self.position = len(self.elements)
 
     def push(self, element):
@@ -94,10 +104,10 @@ class EncodedSequence(BaseSequence):
 
     def pop(self):
         self.position -= 1
-        return self.elements[self.position]
+        return int(self.elements[self.position])
 
     def key(self):
-        return tuple(self.elements[:self.position])
+        return tuple(int(e) for e in self.elements[:self.position])
 
     def reversed(self):
         return EncodedSequence(
@@ -107,6 +117,9 @@ class EncodedSequence(BaseSequence):
 
     def __len__(self):
         return self.position
+
+    def __iter__(self):
+        return (int(e) for e in self.elements)
 
 
 # Tests -----------------------------------------------------------------------

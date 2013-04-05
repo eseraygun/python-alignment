@@ -1,4 +1,7 @@
-import numpy
+try:
+    import numpypy as numpy
+except ImportError:
+    import numpy
 from abc import ABCMeta, abstractmethod
 
 from alignment.sequence import *
