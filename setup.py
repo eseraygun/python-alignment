@@ -12,6 +12,6 @@ setup(
     url='https://github.com/eseraygun/python-alignment',
     license='LICENSE.txt',
     description='Native Python library for generic sequence alignment.',
-    long_description=open('README.txt').read(),
+    long_description=open('README.rst').read(),
     requires=['numpy'],
 )
