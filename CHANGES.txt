@@ -3,11 +3,6 @@ Changes in 1.0.7
 
 - Do not search alternatives if a match was found in backtrace.
 
-Changes in 1.0.5
-================
-
-- Updated README file.
-
 Changes in 1.0.4
 ================
 

@@ -5,7 +5,7 @@ from distutils.core import setup
 
 setup(
     name='alignment',
-    version='1.0.7',
+    version='1.0.8',
     author='Eser Aygün',
     author_email='eser.aygun@gmail.com',
     packages=['alignment'],
