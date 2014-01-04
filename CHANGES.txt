@@ -6,7 +6,7 @@ Changes in 1.0.6
 Changes in 1.0.5
 ================
 
-- Updated README file.
+- Do not search alternatives if a match was found in backtrace.
 
 Changes in 1.0.4
 ================

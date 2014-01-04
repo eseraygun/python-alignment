@@ -9,7 +9,7 @@ pairwise sequence alignment. I also plan to add support for profile-profile
 alignments, but who knows when.
 
 Installation
-=====
+============
 
 You can install the most recent release using pip:
 
