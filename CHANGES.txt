@@ -1,9 +1,10 @@
-Changes in 1.0.6
+Changes in 1.0.9
 ================
 
-- Updated MANIFEST.in file.
+- Make it compatible with Python 2.6.
 
-Changes in 1.0.5
+
+Changes in 1.0.7
 ================
 
 - Do not search alternatives if a match was found in backtrace.
