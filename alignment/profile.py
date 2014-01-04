@@ -32,7 +32,7 @@ class SoftElement(object):
 
     def probabilities(self):
         t = sum(self.__weights.itervalues())
-        return {e: float(w) / t for e, w in self.__weights.iteritems()}
+        return dict((e, float(w) / t) for e, w in self.__weights.iteritems())
 
     def toDict(self):
         return self.__weights
