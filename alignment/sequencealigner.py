@@ -235,24 +235,25 @@ class GlobalSequenceAligner(SequenceAligner):
                 self.backtraceFrom(first, second, f, i - 1, j - 1,
                                    alignments, alignment)
                 alignment.pop()
-            if i == m - 1:
-                if c == y:
+            else:
+                if i == m - 1:
+                    if c == y:
+                        self.backtraceFrom(first, second, f, i, j - 1,
+                                           alignments, alignment)
+                elif c == y + self.gapScore:
+                    alignment.push(alignment.gap, b, c - y)
                     self.backtraceFrom(first, second, f, i, j - 1,
                                        alignments, alignment)
-            elif c == y + self.gapScore:
-                alignment.push(alignment.gap, b, c - y)
-                self.backtraceFrom(first, second, f, i, j - 1,
-                                   alignments, alignment)
-                alignment.pop()
-            if j == n - 1:
-                if c == x:
+                    alignment.pop()
+                if j == n - 1:
+                    if c == x:
+                        self.backtraceFrom(first, second, f, i - 1, j,
+                                           alignments, alignment)
+                elif c == x + self.gapScore:
+                    alignment.push(a, alignment.gap, c - x)
                     self.backtraceFrom(first, second, f, i - 1, j,
                                        alignments, alignment)
-            elif c == x + self.gapScore:
-                alignment.push(a, alignment.gap, c - x)
-                self.backtraceFrom(first, second, f, i - 1, j,
-                                   alignments, alignment)
-                alignment.pop()
+                    alignment.pop()
 
 
 class StrictGlobalSequenceAligner(SequenceAligner):
@@ -307,6 +308,7 @@ class StrictGlobalSequenceAligner(SequenceAligner):
                     self.backtraceFrom(first, second, f, i - 1, j,
                                        alignments, alignment)
                     alignment.pop()
+                    return
             if j != 0:
                 y = f[i, j - 1]
                 b = second[j - 1]
@@ -384,13 +386,14 @@ class LocalSequenceAligner(SequenceAligner):
                 self.backtraceFrom(first, second, f, i - 1, j - 1,
                                    alignments, alignment)
                 alignment.pop()
-            if c == y + self.gapScore:
-                alignment.push(alignment.gap, b, c - y)
-                self.backtraceFrom(first, second, f, i, j - 1,
-                                   alignments, alignment)
-                alignment.pop()
-            if c == x + self.gapScore:
-                alignment.push(a, alignment.gap, c - x)
-                self.backtraceFrom(first, second, f, i - 1, j,
-                                   alignments, alignment)
-                alignment.pop()
+            else:
+                if c == y + self.gapScore:
+                    alignment.push(alignment.gap, b, c - y)
+                    self.backtraceFrom(first, second, f, i, j - 1,
+                                       alignments, alignment)
+                    alignment.pop()
+                if c == x + self.gapScore:
+                    alignment.push(a, alignment.gap, c - x)
+                    self.backtraceFrom(first, second, f, i - 1, j,
+                                       alignments, alignment)
+                    alignment.pop()
