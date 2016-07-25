@@ -1,3 +1,4 @@
+from builtins import range
 try:
     import numpypy as numpy
 except ImportError:
@@ -122,7 +123,7 @@ class SequenceAlignment(object):
     def __str__(self):
         first = [str(e) for e in self.first.elements]
         second = [str(e) for e in self.second.elements]
-        for i in xrange(len(first)):
+        for i in range(len(first)):
             n = max(len(first[i]), len(second[i]))
             format = '%-' + str(n) + 's'
             first[i] = format % first[i]
@@ -132,7 +133,7 @@ class SequenceAlignment(object):
     def __unicode__(self):
         first = [unicode(e) for e in self.first.elements]
         second = [unicode(e) for e in self.second.elements]
-        for i in xrange(len(first)):
+        for i in range(len(first)):
             n = max(len(first[i]), len(second[i]))
             format = u'%-' + unicode(n) + u's'
             first[i] = format % first[i]
@@ -187,8 +188,8 @@ class GlobalSequenceAligner(SequenceAligner):
         m = len(first) + 1
         n = len(second) + 1
         f = numpy.zeros((m, n), int)
-        for i in xrange(1, m):
-            for j in xrange(1, n):
+        for i in range(1, m):
+            for j in range(1, n):
                 # Match elements.
                 ab = f[i - 1, j - 1] \
                     + self.scoring(first[i - 1], second[j - 1])
@@ -265,12 +266,12 @@ class StrictGlobalSequenceAligner(SequenceAligner):
         m = len(first) + 1
         n = len(second) + 1
         f = numpy.zeros((m, n), int)
-        for i in xrange(1, m):
+        for i in range(1, m):
             f[i, 0] = f[i - 1, 0] + self.gapScore
-        for j in xrange(1, n):
+        for j in range(1, n):
             f[0, j] = f[0, j - 1] + self.gapScore
-        for i in xrange(1, m):
-            for j in xrange(1, n):
+        for i in range(1, m):
+            for j in range(1, n):
                 # Match elements.
                 ab = f[i - 1, j - 1] \
                     + self.scoring(first[i - 1], second[j - 1])
@@ -338,8 +339,8 @@ class LocalSequenceAligner(SequenceAligner):
         m = len(first) + 1
         n = len(second) + 1
         f = numpy.zeros((m, n), int)
-        for i in xrange(1, m):
-            for j in xrange(1, n):
+        for i in range(1, m):
+            for j in range(1, n):
                 # Match elements.
                 ab = f[i - 1, j - 1] \
                     + self.scoring(first[i - 1], second[j - 1])
@@ -364,8 +365,8 @@ class LocalSequenceAligner(SequenceAligner):
             minScore = self.bestScore(f)
         else:
             minScore = self.minScore
-        for i in xrange(m):
-            for j in xrange(n):
+        for i in range(m):
+            for j in range(n):
                 if f[i, j] >= minScore:
                     self.backtraceFrom(first, second, f, i, j,
                                        alignments, alignment)

@@ -1,4 +1,12 @@
-from itertools import izip
+from six import iteritems
+from six import itervalues
+from builtins import range
+
+try:
+    import itertools.izip as izip
+except ImportError:
+    pass
+
 import operator
 
 from alignment.sequence import *
@@ -20,19 +28,19 @@ class SoftElement(object):
 
     def mergedWith(self, other):
         weights = dict(self.__weights)
-        for element, weight in other.__weights.iteritems():
+        for element, weight in iteritems(other.__weights):
             weights[element] = weights.get(element, 0) + weight
         return SoftElement(weights)
 
     def pairs(self):
-        return self.__weights.iteritems()
+        return iteritems(self.__weights)
 
     def sorted(self):
-        return sorted(self.__weights.iteritems(), key=lambda w: (-w[1], w[0]))
+        return sorted(iteritems(self.__weights), key=lambda w: (-w[1], w[0]))
 
     def probabilities(self):
-        t = sum(self.__weights.itervalues())
-        return dict((e, float(w) / t) for e, w in self.__weights.iteritems())
+        t = sum(itervalues(self.__weights))
+        return dict((e, float(w) / t) for e, w in iteritems(self.__weights))
 
     def toDict(self):
         return self.__weights
@@ -81,7 +89,7 @@ class Profile(Sequence):
     @classmethod
     def fromSequenceAlignment(cls, alignment):
         profile = cls()
-        for i in xrange(len(alignment)):
+        for i in range(len(alignment)):
             a = alignment.first[i]
             b = alignment.second[i]
             if a == b:

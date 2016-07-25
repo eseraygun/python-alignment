@@ -1,3 +1,4 @@
+from six import iteritems
 from alignment.profile import *
 from alignment.sequencealigner import *
 
@@ -11,8 +12,8 @@ class SoftScoring(Scoring):
 
     def __call__(self, firstElement, secondElement):
         score = 0.0
-        for a, p in firstElement.probabilities().iteritems():
-            for b, q in secondElement.probabilities().iteritems():
+        for a, p in iteritems(firstElement.probabilities()):
+            for b, q in iteritems(secondElement.probabilities()):
                 score += p * q * self.scoring(a, b)
         return score
 
