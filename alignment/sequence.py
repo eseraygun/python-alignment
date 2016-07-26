@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 try:
     import numpypy as numpy
 except ImportError:
@@ -127,18 +129,18 @@ class EncodedSequence(BaseSequence):
 if __name__ == '__main__':
     s1 = Sequence('what a beautiful day'.split())
     s2 = Sequence('what a dissapointingly bad day'.split())
-    print 's1', s1
-    print 's2', s2
-    print
+    print('s1', s1)
+    print('s2', s2)
+    print('')
 
     from alignment.vocabulary import Vocabulary
     v = Vocabulary()
     e1 = v.encodeSequence(s1)
     e2 = v.encodeSequence(s2)
-    print 'v', v
-    print 'e1', e1
-    print 'e2', e2
-    print
+    print('v', v)
+    print('e1', e1)
+    print('e2', e2)
+    print('')
 
     from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
     s = SimpleScoring(2, -1)
@@ -147,7 +149,7 @@ if __name__ == '__main__':
     for alignment in alignments:
         as1 = v.decodeSequence(alignment.first)
         as2 = v.decodeSequence(alignment.second)
-        print alignment.percentIdentity()
-        print as1
-        print as2
-        print
+        print(alignment.percentIdentity())
+        print(as1)
+        print(as2)
+        print('')
