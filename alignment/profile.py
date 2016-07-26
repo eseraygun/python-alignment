@@ -3,7 +3,7 @@ from six import itervalues
 from builtins import range
 
 try:
-    import itertools.izip as izip
+    import itertools.izip as zip
 except ImportError:
     pass
 
@@ -131,7 +131,7 @@ class Profile(Sequence):
             raise ValueError(
                 'profiles with different lengths cannot be merged')
         self.elements = [a.mergedWith(b)
-                         for a, b in izip(self.elements, other.elements)]
+                         for a, b in zip(self.elements, other.elements)]
 
     def toDict(self):
         return [e.toDict() for e in self.elements]
