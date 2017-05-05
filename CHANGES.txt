@@ -1,8 +1,13 @@
+Changes in 1.0.10
+================
+
+- Fix remaining Python 3 compatibility issues.
+- Fix some cosmetic issues in the code.
+
 Changes in 1.0.9
 ================
 
 - Make it compatible with Python 2.6.
-
 
 Changes in 1.0.7
 ================

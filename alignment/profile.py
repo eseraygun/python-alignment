@@ -1,15 +1,11 @@
 from six import iteritems
 from six import itervalues
-from builtins import range
-
-try:
-    import itertools.izip as zip
-except ImportError:
-    pass
+from six import text_type
+from six.moves import builtins
 
 import operator
 
-from alignment.sequence import *
+from .sequence import Sequence
 
 
 # Profile ---------------------------------------------------------------------
@@ -74,7 +70,7 @@ class SoftElement(object):
     def __unicode__(self):
         weights = self.sorted()
         if len(weights) == 1:
-            return unicode(weights[0][0])
+            return text_type(weights[0][0])
         else:
             return u'{%s}' % (u','.join(u'%s:%d' % w for w in weights))
 
@@ -124,14 +120,17 @@ class Profile(Sequence):
         return max(len(e) for e in self.elements)
 
     def maxVariationCount(self):
-        return reduce(operator.mul, (len(e) for e in self.elements))
+        # Silence code inspection warning. `builtins.reduce` should hopefully
+        # work both in Python 2 and Python 3.
+        # noinspection PyCompatibility,PyUnresolvedReferences
+        return builtins.reduce(operator.mul, (len(e) for e in self.elements))
 
     def mergeWith(self, other):
         if len(self) != len(other):
             raise ValueError(
                 'profiles with different lengths cannot be merged')
         self.elements = [a.mergedWith(b)
-                         for a, b in zip(self.elements, other.elements)]
+                         for a, b in builtins.zip(self.elements, other.elements)]
 
     def toDict(self):
         return [e.toDict() for e in self.elements]
