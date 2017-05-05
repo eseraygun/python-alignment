@@ -6,7 +6,7 @@ from distutils.core import setup
 # noinspection PyArgumentList
 setup(
     name='alignment',
-    version='1.0.9',
+    version='1.0.10',
     author='Eser Aygün',
     author_email='eser.aygun@gmail.com',
     packages=['alignment'],
