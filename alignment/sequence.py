@@ -134,7 +134,7 @@ if __name__ == '__main__':
     print('s2', s2)
     print('')
 
-    from vocabulary import Vocabulary
+    from alignment.vocabulary import Vocabulary
     v = Vocabulary()
     e1 = v.encodeSequence(s1)
     e2 = v.encodeSequence(s2)
@@ -143,8 +143,8 @@ if __name__ == '__main__':
     print('e2', e2)
     print('')
 
-    from sequencealigner import SimpleScoring
-    from sequencealigner import GlobalSequenceAligner
+    from alignment.sequencealigner import SimpleScoring
+    from alignment.sequencealigner import GlobalSequenceAligner
     s = SimpleScoring(2, -1)
     a = GlobalSequenceAligner(s, -2)
     score, alignments = a.align(e1, e2, backtrace=True)

@@ -8,8 +8,8 @@ except ImportError:
 from abc import ABCMeta
 from abc import abstractmethod
 
-from sequence import GAP_CODE
-from sequence import EncodedSequence
+from .sequence import GAP_CODE
+from .sequence import EncodedSequence
 
 
 # Scoring ---------------------------------------------------------------------

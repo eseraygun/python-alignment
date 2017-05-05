@@ -5,7 +5,7 @@ from six.moves import builtins
 
 import operator
 
-from sequence import Sequence
+from .sequence import Sequence
 
 
 # Profile ---------------------------------------------------------------------
@@ -122,7 +122,7 @@ class Profile(Sequence):
     def maxVariationCount(self):
         # Silence code inspection warning. `builtins.reduce` should hopefully
         # work both in Python 2 and Python 3.
-        # noinspection PyCompatibility
+        # noinspection PyCompatibility,PyUnresolvedReferences
         return builtins.reduce(operator.mul, (len(e) for e in self.elements))
 
     def mergeWith(self, other):

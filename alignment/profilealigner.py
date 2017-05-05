@@ -1,16 +1,16 @@
 from six import iteritems
 
-from sequence import GAP_CODE
-from profile import SoftElement
-from profile import Profile
-from sequencealigner import Scoring
-from sequencealigner import SequenceAlignment
-from sequencealigner import SequenceAligner
-from sequencealigner import GlobalSequenceAligner
-from sequencealigner import StrictGlobalSequenceAligner
-from sequencealigner import LocalSequenceAligner
-
 from abc import ABCMeta
+
+from .sequence import GAP_CODE
+from .profile import SoftElement
+from .profile import Profile
+from .sequencealigner import Scoring
+from .sequencealigner import SequenceAlignment
+from .sequencealigner import SequenceAligner
+from .sequencealigner import GlobalSequenceAligner
+from .sequencealigner import StrictGlobalSequenceAligner
+from .sequencealigner import LocalSequenceAligner
 
 
 # Scoring ---------------------------------------------------------------------
@@ -42,6 +42,7 @@ class ProfileAlignment(SequenceAlignment):
 
 # Aligner ---------------------------------------------------------------------
 
+# noinspection PyAbstractClass
 class ProfileAligner(SequenceAligner):
     __metaclass__ = ABCMeta
 

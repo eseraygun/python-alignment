@@ -3,6 +3,7 @@
 
 from distutils.core import setup
 
+# noinspection PyArgumentList
 setup(
     name='alignment',
     version='1.0.9',
