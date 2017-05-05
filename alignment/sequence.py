@@ -1,4 +1,5 @@
 from __future__ import print_function
+from six import text_type
 
 try:
     import numpypy as numpy
@@ -64,7 +65,7 @@ class BaseSequence(object):
             result = u''
         else:
             result = u'> %s\n' % self.id
-        result += u' '.join(unicode(e) for e in self.elements)
+        result += u' '.join(text_type(e) for e in self.elements)
         return result
 
 
@@ -128,12 +129,12 @@ class EncodedSequence(BaseSequence):
 
 if __name__ == '__main__':
     s1 = Sequence('what a beautiful day'.split())
-    s2 = Sequence('what a dissapointingly bad day'.split())
+    s2 = Sequence('what a disappointingly bad day'.split())
     print('s1', s1)
     print('s2', s2)
     print('')
 
-    from alignment.vocabulary import Vocabulary
+    from vocabulary import Vocabulary
     v = Vocabulary()
     e1 = v.encodeSequence(s1)
     e2 = v.encodeSequence(s2)
@@ -142,7 +143,8 @@ if __name__ == '__main__':
     print('e2', e2)
     print('')
 
-    from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
+    from sequencealigner import SimpleScoring
+    from sequencealigner import GlobalSequenceAligner
     s = SimpleScoring(2, -1)
     a = GlobalSequenceAligner(s, -2)
     score, alignments = a.align(e1, e2, backtrace=True)

@@ -1,5 +1,9 @@
-from alignment.sequence import *
-from alignment.profile import *
+from sequence import GAP_ELEMENT
+from sequence import GAP_CODE
+from sequence import Sequence
+from sequence import EncodedSequence
+from profile import SoftElement
+from profile import Profile
 
 
 # Vocabulary ------------------------------------------------------------------
@@ -82,5 +86,5 @@ class Vocabulary(object):
 
 
 # Cyclic imports.
-from alignment.sequencealigner import SequenceAlignment
-from alignment.profilealigner import ProfileAlignment
+from sequencealigner import SequenceAlignment
+from profilealigner import ProfileAlignment
