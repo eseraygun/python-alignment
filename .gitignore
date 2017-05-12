@@ -1,4 +1,5 @@
 *.py[co]
+__pycache__
 
 # Packages
 *.egg
@@ -17,9 +18,9 @@ develop-eggs
 pip-log.txt
 
 # Unit test / coverage reports
+.cache
 .coverage
 .tox
-.cache
 
 # Translations
 *.mo
